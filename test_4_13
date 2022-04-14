@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+int main()
+{
+printf("c语言\n");
+printf("%d\n",100);
+printf("%d\n",sizeof(int));
+printf("%d\n",sizeof(char));
+printf("%d\n",sizeof(short));
+printf("%d\n",sizeof(long));
+printf("%d\n",sizeof(long long));
+printf("%d\n",sizeof(float));
+printf("%d\n",sizeof(double));
+    return 0;
+}
+
+int main()
+{
+    int arr[10] = {0};
+    int i = 0;
+    int sum = 0;
+    for (i = 0; i < 10; i++)
+    {
+        arr[i] = i + 1;
+        printf("%d ",arr[i]);
+        sum = sum + arr[i];
+    }
+    int avg = sum / 10;
+    printf("avg=%d\n", avg);
+    return 0;
+}
+
+int main()
+{
+    int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    int i = 0;
+    int *p = arr;//p作为指针，指向内存中数组第一个元素的位置
+    int sum = 0;
+    for (i = 0; i < 10; i++)
+    {
+        printf("%d ", arr[i]);
+        p++;//内存地址加1
+        sum = sum + arr[i];
+    }
+    int avg = sum / 10;
+    printf("avg=%d\n", avg);
+    return 0;
+}
+
+int main()
+{
+    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int *p=arr;
+    int i = 0;
+    int max = 0;
+    for (i = 0; i < 10; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    for (i = 0; i < 10; i++)
+    {
+        if (arr[i] > max)
+            max = arr[i];
+    }
+    printf("max=%d\n",max);
+    return 0;
+}
