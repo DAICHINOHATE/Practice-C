@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+// int main()
+// {
+//     int n = 0;
+//     int i = 0;
+//     int mul = 1;
+//     scanf("%d", &n);
+//     for (i = 1; i <= n; i++)
+//     {
+//         mul = mul * i;
+//     }
+//     printf("n的阶乘=%d\n", mul);
+//     return 0;
+// }
+
+// int main()
+// {
+//     int i = 0;
+//     int n = 0;
+//     int mul = 1;
+//     int sum = 0;
+//     scanf("%d", &n);
+//     for (i = 1; i <= n; i++)
+//     {
+//         mul = mul * i;
+//         sum = sum + mul;
+//     }
+//     printf("%d\n", sum);
+//     return 0;
+// }
+
+int binsearch(int x, int v[], int n)
+{
+    int local = 0;
+    return local;
+}
+
+int main()
+{
+    int n = 0;
+    int i = 0;
+    int x = 0;
+    int arr[100] = {0};
+    printf("输入大于0小于100的数 ");
+    scanf("%d", &n);
+    if (n < 0 || n > 100)
+        printf("错误");
+    else
+    {
+        for (i = 0; i < n; i++)
+        {
+            arr[i] = i;
+            // printf("%d ", arr[i]);
+        }
+        printf("输入需要查找的数 ");
+        scanf("%d", &x);
+        int local = binsearch(x, arr[], n);
+        print("%d\n",local);
+    }
+    return 0;
+}
