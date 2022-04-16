@@ -32,8 +32,20 @@
 
 int binsearch(int x, int v[], int n)
 {
-    int local = 0;
-    return local;
+    int low = 0;
+    int high = n - 1;
+    int mid;
+    while (low <= high)
+    {
+        mid = (low + high) / 2;
+        if (v[mid] == x)
+            return mid;
+        else if (v[mid] > x)
+            high = mid - 1;
+        else
+            low = mid + 1;
+    }
+    return -1;
 }
 
 int main()
@@ -42,9 +54,10 @@ int main()
     int i = 0;
     int x = 0;
     int arr[100] = {0};
+    int local = 0;
     printf("输入大于0小于100的数 ");
     scanf("%d", &n);
-    if (n < 0 || n > 100)
+    if (n < 0 || n >= 100)
         printf("错误");
     else
     {
@@ -55,8 +68,11 @@ int main()
         }
         printf("输入需要查找的数 ");
         scanf("%d", &x);
-        int local = binsearch(x, arr[], n);
-        print("%d\n",local);
+        local = binsearch(x, arr, n);
+        if (-1 == local)
+            printf("查找失败\n");
+        else
+            printf("%d\n", local);
     }
     return 0;
 }
