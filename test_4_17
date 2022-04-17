@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void menu()
+{
+    printf("***************************************\n");
+    printf("************   1.play   ***************\n");
+    printf("************   0.exit   ***************\n");
+    printf("***************************************\n");
+}
+
+void game()
+{
+    int ret = rand() % 100 + 1;
+    //printf("%d\n", ret);
+    int guess = 0;
+    while (1)
+    {
+        printf("请猜数字:>");
+        scanf("%d", &guess);
+        if (ret > guess)
+        {
+            printf("猜小了\n");
+        }
+        else if (ret < guess)
+        {
+            printf("猜大了\n");
+        }
+        else
+        {
+            printf("恭喜你，猜对了\n");
+            break;
+        }
+    }
+}
+
+int main()
+{
+    int input = 0;
+    srand((unsigned int)time(NULL)); //时间戳实现随机数起点,保证每次运行生成的起点不一样即可
+    do
+    {
+        menu();
+        printf("请选择>");
+        scanf("%d", &input);
+        switch (input)
+        {
+        case 1:
+            game();
+            break;
+        case 0:
+            printf("退出游戏\n");
+            break;
+        default:
+            printf("输入错误，重新选择\n");
+            break;
+        }
+    } while (input);
+
+    return 0;
+}
+
+void swap(int *x, int *y)//需要注意的是，在给函数传参的时候传递给函数的是两个数在内存中的地址，所以我们在函数中需要使用指针
+{
+    int rep = 0;
+    rep = *x;
+    *x = *y;
+    *y = rep;
+}
+
+int main()
+{
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    printf("输入三个数进行排序\n");
+    scanf("%d%d%d", &a, &b, &c);
+    if (a > b)
+        swap(&a, &b);
+    if (a > c)
+        swap(&a, &c);
+    if (b > c)
+        swap(&b, &c);
+    printf("%d %d %d\n", a, b, c);
+    return 0;
+}
+
+//最大公约数算法：从较小值开始试除，每次减一/辗转相除法：大数模小数，若为0则为小说，否则用小数继续模刚刚得到的模值，以此类推
+
+int main()//闰年
+{
+    int y = 0;
+    int i = 0;
+    for (y = 1000; y <= 2000; y++)
+    {
+        if ((y % 400 == 0)||((y % 100 != 0) && (y % 4 == 0)))
+        {
+            i++;
+            printf("%d ", y);
+        }   
+    }
+    printf("总共%d个", i);
+    return 0;
+}
+
+//寻找素数：用2到（本身-1）试除计算模，模为0则不是，其余是/sqrt函数：开平方函数，也可以简化为2-sqrt(本身)试除计算模
+
+
+//shundown -s -t 60//电脑60s后关机
+//shundown -a//取消关机
