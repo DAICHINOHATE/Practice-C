@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+int bin_search(int x, int arr[], int n)//形参中只要说明是数组即可，即有中括号，本质上是个指针，指向数组首元素，不写大小因为无意义
+{
+    int low = 0;
+    int high = n - 1;
+    int mid = 0;
+    while (high >= low)
+    {
+        mid = (high + low) / 2;
+        if (arr[mid] == x)
+        {
+            return mid+1;
+        }
+        else if (arr[mid] < x)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int key = 0;
+    printf("请输入0-9中的数>");
+    scanf("%d",&key);
+    int sc = sizeof(arr) / sizeof(arr[0]);
+    int ret = bin_search(key, arr, sc);//实参传递时，数组名实际上仅仅传过去了数组首元素的地址
+    if (ret == -1)
+    {
+        printf("查找失败\n");
+    }
+    else
+    {
+        printf("查找成功，位置为第%d个\n", ret);
+    }
+    return 0;
+}
+
+int main()
+{
+    printf("%d", printf("%d", printf("%d", 43)));//printf函数返回值是打印在屏幕上的字符个数
+    return 0;
+}
+
+
+// 调用自建函数应先声明，放main函数调用之前可以不声明，放main函数后面需要声明
+
+// 函数的声明一般放在头文件里  .h格式
+// 函数的定义放在源文件里   .c格式
