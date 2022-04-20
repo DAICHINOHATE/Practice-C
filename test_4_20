@@ -1,0 +1,122 @@
+#include <stdio.h>
+
+int print(int n)//递归打印一个整数的每一位
+{
+    if (n > 9)
+    {
+        print(n / 10);
+    }
+    printf("%d ", n % 10);
+}
+
+int main()
+{
+    int num = 0;
+    scanf("%d", &num);
+    print(num);
+    return 0;
+
+
+int count_string(char *str) //计算字符串长度
+{
+    int n = 0;
+    while (*str != '\0')
+    {
+        n++;
+        str++;
+    }
+    return n;
+}
+
+void reserve_string(char *str)//循环方式实现逆序字符串
+{
+    int right = count_string(str) - 1;
+    int left = 0;
+    for (; left < right; left++, right--)
+    {
+        char tmp = 0;
+        tmp = str[left];
+        str[left] = str[right];
+        str[right] = tmp;
+    }
+}
+
+void reserve_string(char *str)//递归方式实现逆序
+{
+    char tmp = *str;
+    int len = count_string(str);
+    *str = *(str + len - 1);
+    *(str + len - 1) = '\0';
+    if (count_string(str+1) > 1)
+    {
+        reserve_string(str + 1);
+    }
+    *(str + len - 1) = tmp;
+}
+
+int main()
+{
+    char arr[] = "abcdef";
+    reserve_string(arr);
+    printf("%s\n", arr); // fedcba
+    return 0;
+}
+
+int Digitsum(int num)//求一个数各个位上数字之和
+{
+    if (num > 9)
+    {
+        return Digitsum(num / 10) + num % 10;//一步一步递归
+    }
+    else
+    {
+        return num;
+    }
+}
+
+int main()
+{
+    int num = 1729;
+    int sum = Digitsum(num);
+    printf("%d", sum);
+    return 0;
+}
+
+double Pow(int n, int k) //求n的k次方
+{
+    if (k > 0)
+    {
+        return Pow(n, k - 1) * n;
+    }
+    else if (k < 0)
+    {
+        return 1.0 / Pow(n, -k);//负次方知道原理也可以写
+    }
+    else
+    {
+        return 1.0;
+    }
+}
+
+int main()
+{
+    int n = 0;
+    int k = 0;
+    scanf("%d %d", &n, &k);
+    double res = Pow(n, k);
+    printf("%lf", res);
+    return 0;
+}
+
+
+
+int main()
+{
+    char arr1[]={'b','i','t'};
+    int arr2[3][4]={1,2,3,4,5,6,7,8,9};//二维数组按行开始初始化，不够后补0
+    int arr3[3][4]={{1,2},{3,4},{5,6}};
+    int arr4[][4]={{1,2},{3,4},{5,6}};//行可以省略，按大小自动赋给，列不可以省略
+    return 0;
+}
+
+
